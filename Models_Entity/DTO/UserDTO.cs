@@ -4,6 +4,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Models_Entity.Models_Enum;
 
 namespace Models_Entity.DTO
 {
@@ -14,6 +15,6 @@ namespace Models_Entity.DTO
         [EmailAddress]
         public required string Email { get; set; }
         public required string Password { get; set; }
-        public required string Role { get; set; }
+        public required Role_enum Role { get; set; }
     }
 }

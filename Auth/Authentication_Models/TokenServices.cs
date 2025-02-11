@@ -12,7 +12,7 @@ namespace Auth.Authentication_Models
             var claimsLista = new[]
             {
                 new Claim(JwtRegisteredClaimNames.Sub,user.Email),
-                new Claim(ClaimTypes.Role,user.Role),
+                new Claim(ClaimTypes.Role,user.Role.ToString()),
                 new Claim(JwtRegisteredClaimNames.Jti,Guid.NewGuid().ToString()),
             };
 
