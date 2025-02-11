@@ -1,4 +1,6 @@
+using Auth.Authentication_Models;
 using InfraStractar.Data;
+using InfraStractar.Repository.RepositoryModels;
 
 namespace OnlineStore
 {
@@ -14,6 +16,11 @@ namespace OnlineStore
             builder.Services.AddDbContext<StoryContext>();
 
             builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
+
+            builder.Services.AddScoped<UserRepository>();
+            builder.Services.AddScoped<TokenServices>();
+
 
             // Add Swagger services
             builder.Services.AddEndpointsApiExplorer();

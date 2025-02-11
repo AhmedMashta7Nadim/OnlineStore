@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using AutoMapper;
+using InfraStractar.Data;
 using InfraStractar.Repository.IServicesRepository;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Models_Entity.Entry_Models;
 
 namespace InfraStractar.Repository.ServicesRepository
@@ -13,14 +12,42 @@ namespace InfraStractar.Repository.ServicesRepository
         where V : class
         where Z : class
     {
-        public Task<T> Add(Z entity)
+        private readonly StoryContext context;
+        private readonly IMapper mapper;
+
+        public Services(StoryContext context, IMapper mapper)
         {
-            throw new NotImplementedException();
+            this.context = context;
+            this.mapper = mapper;
         }
 
-        public Task<V> GetSummary(Guid id)
+
+        public async Task<T> Add(Z entity)
         {
-            throw new NotImplementedException();
+            var mpping = mapper.Map<T>(entity);
+            var request = await context.Set<T>().AddAsync(mpping);
+            try
+            {
+                await context.SaveChangesAsync();
+            }
+            catch (Exception exp)
+            {
+                throw new Exception("Email is not Unique");
+            }
+            return request.Entity;
         }
+
+        public async Task<V> GetId_Summary(Guid id)
+        {
+            var getId = await context.Set<T>().FirstOrDefaultAsync(x => x.Id == id);
+            if (getId is null)
+            {
+                return null;
+            }
+            var mapping = mapper.Map<V>(getId);
+
+            return mapping;
+        }
+
     }
 }

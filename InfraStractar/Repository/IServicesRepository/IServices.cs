@@ -12,6 +12,6 @@ namespace InfraStractar.Repository.IServicesRepository
         where Z : class
     {
         Task<T> Add(Z entity);
-        Task<V> GetSummary(Guid id);
+        Task<V> GetId_Summary(Guid id);
     }
 }

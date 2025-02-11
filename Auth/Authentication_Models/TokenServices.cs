@@ -7,7 +7,7 @@ namespace Auth.Authentication_Models
 {
     public class TokenServices : ITokenServices
     {
-        public string GeneretorToken(User user)
+        public async Task<string> GeneretorToken(User user)
         {
             var claimsLista = new[]
             {
