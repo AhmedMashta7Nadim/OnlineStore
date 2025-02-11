@@ -1,3 +1,5 @@
+using InfraStractar.Data;
+
 namespace OnlineStore
 {
     public class Program
@@ -8,6 +10,10 @@ namespace OnlineStore
 
             // Add services to the container.
             builder.Services.AddControllers();
+
+            builder.Services.AddDbContext<StoryContext>();
+
+            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
             // Add Swagger services
             builder.Services.AddEndpointsApiExplorer();

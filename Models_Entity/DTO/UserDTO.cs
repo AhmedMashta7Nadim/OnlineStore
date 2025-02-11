@@ -4,11 +4,10 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Models_Entity.Entry_Models;
 
-namespace Models_Entity.Models
+namespace Models_Entity.DTO
 {
-    public class User:Entity
+    public class UserDTO
     {
         public required string FirstName { get; set; }
         public required string LastName { get; set; }
@@ -16,11 +15,5 @@ namespace Models_Entity.Models
         public required string Email { get; set; }
         public required string Password { get; set; }
         public required string Role { get; set; }
-    }
-    public class UserName
-    {
-        [EmailAddress]
-        public required string Email { get; set; }
-        public required string Password { get; set; }
     }
 }
