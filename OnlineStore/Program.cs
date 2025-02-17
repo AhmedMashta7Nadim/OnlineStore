@@ -1,6 +1,9 @@
 using Auth.Authentication_Models;
+using Hangfire;
 using InfraStractar.Data;
 using InfraStractar.Repository.RepositoryModels;
+using InfraStractar.RigestarServices;
+using SQL_Coding.Sql_Models;
 
 namespace OnlineStore
 {
@@ -10,19 +13,13 @@ namespace OnlineStore
         {
             var builder = WebApplication.CreateBuilder(args);
 
-            // Add services to the container.
-            builder.Services.AddControllers();
+        // Add services to the container.
+        builder.Services.AddControllers();
 
             builder.Services.AddDbContext<StoryContext>();
+            Rigestar.Rigestarition(builder.Services);
 
-            builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-
-
-            builder.Services.AddScoped<UserRepository>();
-            builder.Services.AddScoped<TokenServices>();
-
-
-            // Add Swagger services
+                 // Add Swagger services
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
@@ -34,10 +31,13 @@ namespace OnlineStore
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            app.UseHangfireDashboard("/hangfire");
             app.UseHttpsRedirection();
 
-            
+            using (var scope = app.Services.CreateScope())
+            {
+                Rigestar.print(scope.ServiceProvider);
+            }
             app.UseAuthentication();
 
             app.UseAuthorization();

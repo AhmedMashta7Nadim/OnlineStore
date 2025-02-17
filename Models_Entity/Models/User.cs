@@ -17,6 +17,10 @@ namespace Models_Entity.Models
         public required string Email { get; set; }
         public required string Password { get; set; }
         public required Role_enum Role { get; set; }
+        public override string ToString()
+        {
+            return $"{FirstName} , {LastName} ,{Email} ,{Password} ,{Role}";
+        }
     }
     public class UserName
     {

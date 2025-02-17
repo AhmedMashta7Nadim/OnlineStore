@@ -11,9 +11,13 @@ namespace InfraStractar.Data
     public class StoryContext:DbContext
     {
         public DbSet<User> users { get; set; }
+
+
+
+        public static string database = "Data Source =(localdb)\\MSSQLLocalDB; Initial Catalog=Story_db";
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source =(localdb)\\MSSQLLocalDB; Initial Catalog=Story_db");
+            optionsBuilder.UseSqlServer(database);
             base.OnConfiguring(optionsBuilder);
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -23,7 +27,6 @@ namespace InfraStractar.Data
                         .IsUnique();
 
             base.OnModelCreating(modelBuilder);
-
         }
 
     }

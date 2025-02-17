@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Models_Entity.DTO;
 using Models_Entity.Models;
+using SQL_Coding.Sql_Models;
 
 namespace OnlineStore.Controllers
 {
@@ -16,6 +17,7 @@ namespace OnlineStore.Controllers
         {
             this.userRepository = userRepository;
         }
+      
 
         [HttpPost("Add_User")]
         public async Task<ActionResult<User>> AddAsync(UserDTO userDTO)

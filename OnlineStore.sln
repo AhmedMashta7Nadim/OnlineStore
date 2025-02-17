@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.12.35707.178 d17.12
+VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OnlineStore", "OnlineStore\OnlineStore.csproj", "{0435C3DC-E720-4516-B1EA-CACC9022AE80}"
 EndProject
@@ -10,6 +10,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Models_Entity", "Models_Entity\Models_Entity.csproj", "{9444F790-D15D-4633-A36D-141BF86A1838}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Auth", "Auth\Auth.csproj", "{72961F80-0719-4B8C-B892-BADB7D3C4F6D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SQL_Coding", "SQL_Coding\SQL_Coding.csproj", "{9623FF94-92B8-4993-A71B-907C61C960C7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{72961F80-0719-4B8C-B892-BADB7D3C4F6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{72961F80-0719-4B8C-B892-BADB7D3C4F6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{72961F80-0719-4B8C-B892-BADB7D3C4F6D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9623FF94-92B8-4993-A71B-907C61C960C7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9623FF94-92B8-4993-A71B-907C61C960C7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9623FF94-92B8-4993-A71B-907C61C960C7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9623FF94-92B8-4993-A71B-907C61C960C7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
