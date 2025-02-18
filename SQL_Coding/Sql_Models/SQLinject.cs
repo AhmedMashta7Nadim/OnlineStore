@@ -13,7 +13,10 @@ namespace SQL_Coding.Sql_Models
     {
         public StringBuilder Sql = new StringBuilder();
         private readonly IRecurringJobManager recurringJobManager;
+        public SQLinject()
+        {
 
+        }
         public SQLinject(IRecurringJobManager recurringJobManager)
         {
             this.recurringJobManager = recurringJobManager;
@@ -32,6 +35,7 @@ namespace SQL_Coding.Sql_Models
 
         public void Execute(string connectionString, string query)
         {
+            StreamWriter writer = new StreamWriter("userData.txt");
             object obj;
             using (SqlConnection conn = new SqlConnection(connectionString))
             {
@@ -51,7 +55,10 @@ namespace SQL_Coding.Sql_Models
                                 Role = reader.GetInt32("Role"),
                             };
                             Console.WriteLine(obj);
+                            writer.WriteLine(obj);
+
                         }
+                        writer.Close();
                     }
                 }
             }
@@ -61,12 +68,9 @@ namespace SQL_Coding.Sql_Models
             recurringJobManager.AddOrUpdate(
                 "test",
                 () => Execute(db, Select("users").Builder()),
-                Cron.Minutely // تنفيذ كل دقيقة لتحسين الأداء
+                Cron.Monthly // تنفيذ كل دقيقة لتحسين الأداء
             );
         }
-        public SQLinject()
-        {
-            
-        }
+        
     }
 }

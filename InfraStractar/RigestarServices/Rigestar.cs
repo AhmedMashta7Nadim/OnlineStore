@@ -21,11 +21,12 @@ namespace InfraStractar.RigestarServices
             services.AddSingleton<IRecurringJobManager, RecurringJobManager>();
             services.AddScoped<ISQLinject, SQLinject>();
             services.AddHangfire(config => config.UseSqlServerStorage(StoryContext.database));
-            //services.AddScoped<SQLinject>();
+            services.AddScoped<ApplicationRepository>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
             //Task_function();
             services.AddHangfireServer();
             services.AddScoped<UserRepository>();
+            services.AddScoped<UserApplicationRepository>();
             services.AddScoped<TokenServices>();
             services.AddHangfireServer();
            

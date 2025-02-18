@@ -3,6 +3,7 @@
     public enum Role_enum
     {
         Admin,
+        Developer,
         User
     }
 }

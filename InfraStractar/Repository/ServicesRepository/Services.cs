@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using InfraStractar.Data;
 using InfraStractar.Repository.IServicesRepository;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Models_Entity.Entry_Models;
 
@@ -26,14 +25,7 @@ namespace InfraStractar.Repository.ServicesRepository
         {
             var mpping = mapper.Map<T>(entity);
             var request = await context.Set<T>().AddAsync(mpping);
-            try
-            {
-                await context.SaveChangesAsync();
-            }
-            catch (Exception exp)
-            {
-                throw new Exception("Email is not Unique");
-            }
+            await context.SaveChangesAsync();
             return request.Entity;
         }
 
@@ -49,5 +41,15 @@ namespace InfraStractar.Repository.ServicesRepository
             return mapping;
         }
 
+        public async Task<List<V>> Get_Summary()
+        {
+            var getAll=await context.Set<T>()
+                .OrderDescending()
+                .ToListAsync();
+
+            var mapping=mapper.Map<List<V>>(getAll);
+
+            return mapping;
+        }
     }
 }

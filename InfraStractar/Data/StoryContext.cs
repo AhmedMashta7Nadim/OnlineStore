@@ -1,17 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Models_Entity.Models;
 
 namespace InfraStractar.Data
 {
-    public class StoryContext:DbContext
+    public class StoryContext : DbContext
     {
         public DbSet<User> users { get; set; }
-
+        public DbSet<Application> applications { get; set; }
+        public DbSet<UserApplication> userApplications { get; set; }
 
 
         public static string database = "Data Source =(localdb)\\MSSQLLocalDB; Initial Catalog=Story_db";
@@ -25,6 +21,17 @@ namespace InfraStractar.Data
             modelBuilder.Entity<User>()
                         .HasIndex(x => x.Email)
                         .IsUnique();
+
+
+            modelBuilder.Entity<Application>()
+                .HasMany(x => x.Users)
+                .WithMany(x => x.applications)
+                .UsingEntity<UserApplication>();
+
+            modelBuilder.Entity<Application>()
+                .HasMany(x => x.User_Developer)
+                .WithMany(x => x.applications)
+                .UsingEntity<UserApplication>();
 
             base.OnModelCreating(modelBuilder);
         }

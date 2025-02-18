@@ -18,4 +18,8 @@
     <ProjectReference Include="..\InfraStractar\InfraStractar.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

@@ -16,6 +16,11 @@ namespace InfraStractar.Mapping_Models
         {
             CreateMap<User, UserSummary>().ReverseMap();
             CreateMap<User, UserDTO>().ReverseMap();
+
+            CreateMap<Application, ApplicationSummary>().ReverseMap();
+            CreateMap<Application, ApplicationDTO>().ReverseMap();
+
+            CreateMap<UserApplication, UserApplicationDTO>().ReverseMap();
         }
     }
 }
